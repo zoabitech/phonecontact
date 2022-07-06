@@ -1,0 +1,39 @@
+.main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.edinner {
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 670px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.edinner .cancel {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.image {
+    display: flex;
+
+    justify-content: center;
+    padding: 1em;
+    border-radius: 50%;
+}
