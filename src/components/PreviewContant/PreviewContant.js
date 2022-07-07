@@ -2,11 +2,11 @@ import React from 'react'
 import styles from './styles.module.css';
 const PreviewContant = ({ contact, onPreviewClicked }) => {
     return (
-        <div className={styles.mainContainer}>
+        <div className={styles.previewmainContainer}>
             <div>
                 <button
                     type="button"
-                    onClick={onPreviewClicked}
+                    onClick={(event) => onPreviewClicked(event, contact)}
                 >
                     !
                 </button>

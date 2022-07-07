@@ -1,8 +1,8 @@
 import React from "react";
 import styles from './styles.module.css';
-const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
+const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick, }) => {
   return (
-    <div className={styles.mainContainer}>
+    <div className={styles.mainContainerReadOnly}>
       <img src={contact.image} alt={contact.image} />
       <h3>{contact.fullName}</h3>
       <h3>{contact.address}</h3>

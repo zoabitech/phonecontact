@@ -1,8 +1,10 @@
-.mainContainer {
+.prevViewmainContainer {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: center;
     align-items: center;
     border: 1px solid black;
+    width: 100%;
     margin: 2rem;
     padding: 1em;
 }
