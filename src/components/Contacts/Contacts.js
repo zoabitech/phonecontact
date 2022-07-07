@@ -6,9 +6,13 @@ import styles from './styles.module.css';
 import data from "../../mock-data.json";
 import ReadOnlyRow from "../ReadOnlyContant/ReadOnlyRow";
 import EditableRow from "../EditAbleContant/EditableRow";
+import AddContact from "../AddContact/AddContact";
+import PreviewContant from "../PreviewContant/PreviewContant";
 
 const Contacts = () => {
-    const [contacts, setContacts] = useState(data);
+    const [contacts, setContacts] = useState(data)
+    const [open, setOpen] = useState(false);
+    const [showReadEdit, setShowReadEdit] = useState(false)
     const [addFormData, setAddFormData] = useState({
         image: "http://i.pravatar.cc/200?img=1",
         fullName: "",
@@ -106,7 +110,15 @@ const Contacts = () => {
     const handleCancelClick = () => {
         setEditContactId(null);
     };
-
+    const sortContactList = (contacts) => {
+        contacts.sort((a, b) => {
+            if (a.fullName.toLowerCase() < b.fullName.toLowerCase())
+                return -1;
+            if (a.fullName.toLowerCase() > b.fullName.toLowerCase())
+                return 1;
+            return 0;
+        })
+    }
     const handleDeleteClick = (contactId) => {
         const newContacts = [...contacts];
 
@@ -116,41 +128,16 @@ const Contacts = () => {
 
         setContacts(newContacts);
     };
-
+    sortContactList(contacts);
     return (
         <div className={styles.mainContainer}>
-            <h2>Add a Contact</h2>
-            <form onSubmit={handleAddFormSubmit}>
-                <input
-                    type="text"
-                    name="fullName"
-                    required="required"
-                    placeholder="Enter a name..."
-                    onChange={handleAddFormChange}
-                />
-                <input
-                    type="text"
-                    name="address"
-                    required="required"
-                    placeholder="Enter an addres..."
-                    onChange={handleAddFormChange}
-                />
-                <input
-                    type="text"
-                    name="phoneNumber"
-                    required="required"
-                    placeholder="Enter a phone number..."
-                    onChange={handleAddFormChange}
-                />
-                <input
-                    type="email"
-                    name="email"
-                    required="required"
-                    placeholder="Enter an email..."
-                    onChange={handleAddFormChange}
-                />
-                <button type="submit">Add</button>
-            </form>
+            <button type="submit" onClick={() => setOpen(true)}>Add</button>
+            <AddContact
+                handleAddFormSubmit={handleAddFormSubmit}
+                handleAddFormChange={handleAddFormChange}
+                open={open}
+                onClose={() => setOpen(false)}
+            />
             <form onSubmit={handleEditFormSubmit}>
                 <div>
                     <div className={styles.contacts}>
@@ -163,12 +150,26 @@ const Contacts = () => {
                                         handleCancelClick={handleCancelClick}
                                     />
                                 ) : (
-                                    <ReadOnlyRow
-                                        contact={contact}
-                                        handleEditClick={handleEditClick}
-                                        handleDeleteClick={handleDeleteClick}
-                                    />
+                                    <>
+                                        {
+                                            showReadEdit ?
+                                                (
+                                                    <ReadOnlyRow
+                                                        contact={contact}
+                                                        handleEditClick={handleEditClick}
+                                                        handleDeleteClick={handleDeleteClick}
+                                                    />
+                                                ) : (
+                                                    <PreviewContant
+                                                        contact={contact}
+                                                        onPreviewClicked={() => setShowReadEdit(true)}
+                                                    />
+                                                )
+                                        }
+                                    </>
+
                                 )}
+
                             </Fragment>
                         ))}
                     </div>
