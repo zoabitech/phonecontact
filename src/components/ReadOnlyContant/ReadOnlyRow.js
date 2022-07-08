@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './styles.module.css';
-const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick, }) => {
+const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick, handleCancelOnPreViewClick }) => {
   return (
     <div className={styles.mainContainerReadOnly}>
       <img src={contact.image} alt={contact.image} />
@@ -9,6 +9,12 @@ const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick, }) => {
       <h3>{contact.phoneNumber}</h3>
       <h3>{contact.email}</h3>
       <div>
+        <button
+          type="button"
+          onClick={handleCancelOnPreViewClick}
+        >
+          X
+        </button>
         <button
           type="button"
           onClick={(event) => handleEditClick(event, contact)}

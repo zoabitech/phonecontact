@@ -1,8 +1,8 @@
-.mainContainerReadObly {
+.mainContainerReadOnly {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 1px solid black; */
+    border: 1px solid black;
     width: 100%;
     /* max-width: 640px; */
     margin: 2rem;

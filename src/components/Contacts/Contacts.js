@@ -1,8 +1,7 @@
 
 import React, { useState, Fragment } from "react";
-import { nanoid } from "nanoid";
+import { v4 as uuidv4 } from 'uuid';
 import styles from './styles.module.css';
-// import "./App.css";
 import data from "../../mock-data.json";
 import ReadOnlyRow from "../ReadOnlyContant/ReadOnlyRow";
 import EditableRow from "../EditAbleContant/EditableRow";
@@ -12,7 +11,9 @@ import PreviewContant from "../PreviewContant/PreviewContant";
 const Contacts = () => {
     const [contacts, setContacts] = useState(data)
     const [open, setOpen] = useState(false);
-    const [showReadEdit, setShowReadEdit] = useState(false)
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const [viewContactId, setViewContactId] = useState(null);
     const [addFormData, setAddFormData] = useState({
         image: "http://i.pravatar.cc/200?img=1",
         fullName: "",
@@ -54,21 +55,27 @@ const Contacts = () => {
 
         setEditFormData(newFormData);
     };
-
+    const checkIfContactExist = (name) => {
+        const isContactExist = contacts.find(contact => contact.fullName === name);
+        return (typeof (isContactExist) !== "undefined" ? true : false);
+    }
     const handleAddFormSubmit = (event) => {
         event.preventDefault();
+        if (checkIfContactExist(addFormData.fullName))
+            alert("Sory this name alredy exist in the contact book")
+        else {
+            const newContact = {
+                id: uuidv4(),
+                image: "http://i.pravatar.cc/200?img=1",
+                fullName: addFormData.fullName,
+                address: addFormData.address,
+                phoneNumber: addFormData.phoneNumber,
+                email: addFormData.email,
+            };
 
-        const newContact = {
-            id: nanoid(),
-            image: "http://i.pravatar.cc/200?img=1",
-            fullName: addFormData.fullName,
-            address: addFormData.address,
-            phoneNumber: addFormData.phoneNumber,
-            email: addFormData.email,
-        };
-
-        const newContacts = [...contacts, newContact];
-        setContacts(newContacts);
+            const newContacts = [...contacts, newContact];
+            setContacts(newContacts);
+        }
     };
 
     const handleEditFormSubmit = (event) => {
@@ -106,7 +113,13 @@ const Contacts = () => {
 
         setEditFormData(formValues);
     };
-
+    const handlePreViewClicked = (event, contact) => {
+        event.preventDefault();
+        setViewContactId(contact.id);
+    };
+    const handleCancelOnPreViewClick = () => {
+        setViewContactId(null)
+    };
     const handleCancelClick = () => {
         setEditContactId(null);
     };
@@ -128,23 +141,49 @@ const Contacts = () => {
 
         setContacts(newContacts);
     };
+
+    const searchHandler = (event) => {
+        setSearchTerm(event.target.value)
+        if (searchTerm !== "") {
+            const contactSearch = contacts.filter(contact => {
+                return Object.values(contact)
+                    .join(" ").toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+            })
+            setSearchResults(contactSearch);
+        }
+        else {
+            setSearchResults(contacts)
+        }
+    }
+
     sortContactList(contacts);
+
     return (
         <div className={styles.mainContainer}>
-            <button type="submit" onClick={() => setOpen(true)}>Add</button>
-            <AddContact
-                handleAddFormSubmit={handleAddFormSubmit}
-                handleAddFormChange={handleAddFormChange}
-                open={open}
-                onClose={() => setOpen(false)}
-            />
+            <div>
+                <button type="submit" onClick={() => setOpen(true)}>Add</button>
+                <AddContact
+                    handleAddFormSubmit={handleAddFormSubmit}
+                    handleAddFormChange={handleAddFormChange}
+                    open={open}
+                    onClose={() => setOpen(false)}
+                />
+            </div>
+            <div className={styles.searchContainer}>
+                <div className={styles.iconinput}>
+                    <input type="text" placeholder="Search contact" value={searchTerm} onChange={(event) => searchHandler(event)} />
+                    {/* here need to import the search icon */}
+                </div>
+            </div>
             <form onSubmit={handleEditFormSubmit}>
                 <div>
                     <div className={styles.contacts}>
-                        {contacts.map((contact) => (
+                        {(searchTerm !== "" ? searchResults : contacts).map((contact) => (
                             <Fragment>
                                 {editContactId === contact.id ? (
                                     <EditableRow
+                                        key={uuidv4()}
                                         editFormData={editFormData}
                                         handleEditFormChange={handleEditFormChange}
                                         handleCancelClick={handleCancelClick}
@@ -152,17 +191,18 @@ const Contacts = () => {
                                 ) : (
                                     <>
                                         {
-                                            showReadEdit ?
+                                            viewContactId === contact.id ?
                                                 (
                                                     <ReadOnlyRow
                                                         contact={contact}
                                                         handleEditClick={handleEditClick}
                                                         handleDeleteClick={handleDeleteClick}
+                                                        handleCancelOnPreViewClick={handleCancelOnPreViewClick}
                                                     />
                                                 ) : (
                                                     <PreviewContant
                                                         contact={contact}
-                                                        onPreviewClicked={() => setShowReadEdit(true)}
+                                                        onPreviewClicked={handlePreViewClicked}
                                                     />
                                                 )
                                         }
