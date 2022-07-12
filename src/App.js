@@ -1,10 +1,11 @@
 import React from "react";
-import Contacts from "./components/Contacts/Contacts";
-import "./App.css";
+import ContactsList from "./components/ContactsList/ContactsList";
+import "./index.css";
+
 const App = () => {
   return (
     <div className="app-container">
-      <Contacts />
+      <ContactsList />
     </div>
   );
 };
