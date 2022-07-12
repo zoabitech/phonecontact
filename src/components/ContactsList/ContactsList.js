@@ -5,12 +5,12 @@ import data from "../../mock-data.json";
 import ContactInfo from "../ContactInfo/ContactInfo";
 import EditContact from "../EditContact/EditContact";
 import AddContact from "../AddContact/AddContact";
-import PreviewContant from "../ContactCard/ContactCard";
+import ContactCard from "../ContactCard/ContactCard";
 import { BsSearch, BsPersonPlusFill } from "react-icons/bs";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const Contacts = () => {
+const ContactsList = () => {
   const [contacts, setContacts] = useState(data);
   const [open, setOpen] = useState(false);
   const [searchResults, setSearchResults] = useState(contacts);
@@ -69,7 +69,7 @@ const Contacts = () => {
     else {
       const newContact = {
         id: uuidv4(),
-        image: addFormData.imgLink,
+        image: addFormData.image !== "" ? addFormData.image : "http://i.pravatar.cc/200?img=1",
         fullName: addFormData.fullName,
         address: addFormData.address,
         phoneNumber: addFormData.phoneNumber,
@@ -82,12 +82,23 @@ const Contacts = () => {
     }
     setOpen(false);
   };
-
+  const handleEditClick = (event, contact) => {
+    event.preventDefault();
+    setEditContactId(contact.id);
+    const formValues = {
+      image: "http://i.pravatar.cc/200?img=1",
+      fullName: contact.fullName,
+      address: contact.address,
+      phoneNumber: contact.phoneNumber,
+      email: contact.email,
+    };
+    setEditFormData(formValues);
+  };
   const handleEditFormSubmit = (event) => {
     event.preventDefault();
     const editedContact = {
       id: editContactId,
-      image: "http://i.pravatar.cc/200?img=1",
+      image: editFormData.image !== "" ? editFormData.image : "http://i.pravatar.cc/200?img=1",
       fullName: editFormData.fullName,
       address: editFormData.address,
       phoneNumber: editFormData.phoneNumber,
@@ -101,23 +112,11 @@ const Contacts = () => {
     newContacts[index] = editedContact;
 
     setContacts(newContacts);
+    setSearchResults(newContacts)
     setEditContactId(null);
   };
 
-  const handleEditClick = (event, contact) => {
-    event.preventDefault();
-    setEditContactId(contact.id);
 
-    const formValues = {
-      image: "http://i.pravatar.cc/200?img=1",
-      fullName: contact.fullName,
-      address: contact.address,
-      phoneNumber: contact.phoneNumber,
-      email: contact.email,
-    };
-
-    setEditFormData(formValues);
-  };
   const handlePreViewClicked = (event, contact) => {
     event.preventDefault();
     setViewContactId(contact.id);
@@ -218,11 +217,12 @@ const Contacts = () => {
         <form onSubmit={handleEditFormSubmit}>
           <div>
             <div className={contactslist.contacts}>
-              {searchResults.map((contact) => (
-                <Fragment>
+              {(searchResults).map((contact) => (
+                <Fragment
+                  key={contact.id}
+                >
                   {editContactId === contact.id ? (
                     <EditContact
-                      key={uuidv4()}
                       editFormData={editFormData}
                       handleEditFormChange={handleEditFormChange}
                       handleCancelClick={handleCancelClick}
@@ -239,9 +239,11 @@ const Contacts = () => {
                           }
                         />
                       ) : (
-                        <PreviewContant
+                        <ContactCard
                           contact={contact}
                           onPreviewClicked={handlePreViewClicked}
+                          handleEditClick={handleEditClick}
+                          handleDeleteClick={handleDeleteClick}
                         />
                       )}
                     </>
@@ -252,12 +254,11 @@ const Contacts = () => {
           </div>
         </form>
         <h2 className={contactslist.title}>
-          Total Contacts: {searchResults.length}
-        </h2>
-      </div>
+          {searchResults.length === 0 ? "No contacts..." : ""}
+        </h2>      </div>
       <Footer />
     </div>
   );
 };
 
-export default Contacts;
+export default ContactsList;

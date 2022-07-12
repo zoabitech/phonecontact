@@ -2,22 +2,19 @@ import React from "react";
 import editcontact from "./editcontact.module.css";
 import { AiFillSave } from "react-icons/ai";
 
-const EditableRow = ({
-  editFormData,
-  handleEditFormChange,
-  handleCancelClick,
-}) => {
+const EditContact = ({ editFormData, handleEditFormChange, handleCancelClick, key }) => {
   return (
     <div className={editcontact.main}>
       <div className={editcontact.edinner}>
         <h2 className={editcontact.title}>Edit Contact</h2>
-        <div className={editcontact.image}>
-          <img
-            className={editcontact.image}
-            src={editFormData.image}
-            alt={editFormData.image}
-          />
-        </div>
+        <input
+          className={editcontact.formInput}
+          type="text"
+          placeholder="Enter image url..."
+          name="image"
+          value={editFormData.image}
+          onChange={handleEditFormChange}
+        />
         <input
           className={editcontact.formInput}
           type="text"
@@ -71,4 +68,4 @@ const EditableRow = ({
   );
 };
 
-export default EditableRow;
+export default EditContact;

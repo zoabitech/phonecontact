@@ -21,8 +21,7 @@ const AddContact = ({
           <input
             className={addcontact.formInput}
             type="text"
-            name="imgLink"
-            required="required"
+            name="image"
             placeholder="Enter your image link"
             onChange={handleAddFormChange}
           />

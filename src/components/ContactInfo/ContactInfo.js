@@ -1,13 +1,9 @@
 import React from "react";
 import contactinfo from "./contactinfo.module.css";
-import { MdDelete } from "react-icons/md";
-import { AiFillEdit } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 
 const ReadOnlyRow = ({
   contact,
-  handleEditClick,
-  handleDeleteClick,
   handleCancelOnPreViewClick,
 }) => {
   return (
@@ -34,20 +30,6 @@ const ReadOnlyRow = ({
               onClick={handleCancelOnPreViewClick}
             >
               <IoIosArrowBack color="white" size={30} />
-            </button>
-            <button
-              className={contactinfo.actionBtn}
-              type="button"
-              onClick={(event) => handleEditClick(event, contact)}
-            >
-              <AiFillEdit color="white" size={30} />
-            </button>
-            <button
-              className={contactinfo.actionBtn}
-              type="button"
-              onClick={() => handleDeleteClick(contact.id)}
-            >
-              <MdDelete color="white" size={30} />
             </button>
           </div>
         </div>

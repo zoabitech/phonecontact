@@ -2,10 +2,10 @@
   display: flex;
   background-color: rgb(66, 179, 255);
   margin: 0;
-  width: 60%;
   margin: 0 auto;
   flex-wrap: wrap;
-  min-width: 700px;
+  min-width: 1000px;
+  width: 70%;
   padding: 1rem;
   border-right: 1px solid;
   border-left: 1px solid;

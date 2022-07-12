@@ -1,14 +1,15 @@
-.mainContainer {
+/* .mainContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
+  width: 50%;
   border-bottom: 2px solid rgb(93, 122, 145);
   min-width: 300px;
   margin: 2rem;
   padding: 1em;
-  width: 25%;
-}
+} */
 
 .actionBtn {
   margin: 1rem;
@@ -46,4 +47,9 @@
   width: 50%;
   display: flex;
   justify-content: flex-end;
+}
+
+.btncontainer {
+  display: flex;
+  flex-direction: row;
 }
