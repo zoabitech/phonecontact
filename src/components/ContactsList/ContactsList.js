@@ -22,6 +22,7 @@ const ContactsList = () => {
     address: "",
     phoneNumber: "",
     email: "",
+    desc: ""
   });
 
   // The default data of the edit form
@@ -31,6 +32,7 @@ const ContactsList = () => {
     address: "",
     phoneNumber: "",
     email: "",
+    desc: ""
   });
 
   // contact id which we want to edit
@@ -66,6 +68,7 @@ const ContactsList = () => {
         address: addFormData.address,
         phoneNumber: addFormData.phoneNumber,
         email: addFormData.email,
+        desc: addFormData.desc,
       };
 
       const newContacts = [...contacts, newContact];
@@ -108,6 +111,7 @@ const ContactsList = () => {
       address: contact.address,
       phoneNumber: contact.phoneNumber,
       email: contact.email,
+      desc: contact.desc
     };
     setEditFormData(formValues);
   };
@@ -125,6 +129,7 @@ const ContactsList = () => {
       address: editFormData.address,
       phoneNumber: editFormData.phoneNumber,
       email: editFormData.email,
+      desc: editFormData.desc
     };
 
     const newContacts = [...contacts];

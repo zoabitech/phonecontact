@@ -56,6 +56,8 @@ const EditContact = ({
           value={editFormData.email}
           onChange={handleEditFormChange}
         ></input>
+        <textarea name="desc" rows="5" cols="80" onChange={handleEditFormChange} value={editFormData.desc}>
+        </textarea>
         <div>
           <button type="submit" className={editcontact.saveBtn}>
             <AiFillSave color="white" size={30} />

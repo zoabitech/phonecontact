@@ -19,6 +19,7 @@ const ReadOnlyRow = ({ contact, handleCancelOnPreViewClick }) => {
             <h3 className={contactinfo.text}>{contact.address}</h3>
             <h3 className={contactinfo.text}>{contact.phoneNumber}</h3>
             <h3 className={contactinfo.text}>{contact.email}</h3>
+            <h3 className={contactinfo.text}>{contact.desc}</h3>
           </div>
           <div>
             <button

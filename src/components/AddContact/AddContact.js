@@ -56,10 +56,12 @@ const AddContact = ({
             className={addcontact.addForm}
             type="email"
             name="email"
-            required="required"
             placeholder="Enter an email..."
             onChange={handleAddFormChange}
           />
+          <textarea name="desc" rows="5" cols="29" onChange={handleAddFormChange}>
+            Add description about your self mother fucker
+          </textarea>
           <button className={addcontact.addForm} type="submit">
             Add
           </button>
