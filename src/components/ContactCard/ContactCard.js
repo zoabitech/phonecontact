@@ -8,7 +8,6 @@ const PreviewContant = ({
   onPreviewClicked,
   handleEditClick,
   handleDeleteClick,
-  handleFormSubmit,
 }) => {
   return (
     <div className={contactcard.mainCardContainer}>
@@ -35,7 +34,7 @@ const PreviewContant = ({
           className={contactcard.actionCardBtn}
           type="button"
           name="editContact"
-          onClick={(event) => handleFormSubmit(event)}
+          onClick={(event) => handleEditClick(event, contact)}
         >
           <AiFillEdit color="white" size={30} />
         </button>
