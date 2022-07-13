@@ -1,17 +1,17 @@
-/* .mainContainer {
+.mainCardContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  width: 50%;
+  width: 20%;
   border-bottom: 2px solid rgb(93, 122, 145);
   min-width: 300px;
   margin: 2rem;
   padding: 1em;
-} */
+}
 
-.actionBtn {
+.actionCardBtn {
   margin: 1rem;
   border: 1px solid rgba(166, 205, 234, 255);
   border-radius: 10%;
@@ -19,7 +19,7 @@
   background-color: rgb(12, 133, 247);
 }
 
-.actionBtn:hover {
+.actionCardBtn:hover {
   background-color: rgb(4, 96, 182);
 }
 
@@ -35,7 +35,7 @@
   height: 8rem;
 }
 
-.col1 {
+.col1card {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@
   align-items: flex-start;
 }
 
-.col2 {
+.col2card {
   width: 50%;
   display: flex;
   justify-content: flex-end;

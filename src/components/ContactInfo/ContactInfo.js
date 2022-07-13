@@ -2,14 +2,11 @@ import React from "react";
 import contactinfo from "./contactinfo.module.css";
 import { IoIosArrowBack } from "react-icons/io";
 
-const ReadOnlyRow = ({
-  contact,
-  handleCancelOnPreViewClick,
-}) => {
+const ReadOnlyRow = ({ contact, handleCancelOnPreViewClick }) => {
   return (
     <div className={contactinfo.overlay}>
       <div className={contactinfo.insidecontainer}>
-        <div className={contactinfo.mainContainer}>
+        <div className={contactinfo.mainInfoContainer}>
           <div className={contactinfo.imageContainer}>
             <img
               className={contactinfo.image}

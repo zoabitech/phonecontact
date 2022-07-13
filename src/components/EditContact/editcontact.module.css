@@ -22,7 +22,7 @@
   border-radius: 20px;
 }
 
-.edinner .closeBtn {
+.edinner .closeBtnEdit {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -34,18 +34,11 @@
   color: white;
 }
 
-.image {
-  display: flex;
-  justify-content: center;
-  padding: 1em;
-  border-radius: 50%;
-}
-
-.title {
+.titleEdit {
   text-align: center;
 }
 
-.formInput,
+.editForm,
 .saveBtn {
   border: 1px solid;
   border-radius: 10px;
@@ -58,7 +51,7 @@
   border-color: rgba(166, 205, 234, 255);
 }
 
-.closeBtn:hover,
+.closeBtnEdit:hover,
 .saveBtn:hover {
   background-color: rgb(4, 96, 182);
 }

@@ -3,27 +3,28 @@
   background-color: rgb(66, 179, 255);
   margin: 0;
   min-width: 1000px;
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
   flex-wrap: wrap;
   border-right: 1px solid;
   border-left: 1px solid;
   border-top: 1px solid;
+  height: 5rem;
 }
 
-.title {
+.titleHeader {
   text-align: center;
   color: white;
 }
 
-.col1 {
+.col1header {
   display: flex;
   justify-content: flex-start;
   width: 50%;
   align-items: center;
 }
 
-.col2 {
+.col2header {
   display: flex;
   justify-content: flex-end;
   width: 50%;
@@ -34,11 +35,11 @@
     flex-direction: column;
   }
 
-  .col1 {
+  .col1header {
     flex-direction: column;
   }
 
-  .col2 {
+  .col2header {
     flex-direction: column;
   }
 }

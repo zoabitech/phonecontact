@@ -10,8 +10,12 @@ const AddContact = ({
   return (
     <div className={addcontact.overlay}>
       <div className={addcontact.insidecontainer}>
-        <h2 className={addcontact.title}>Add a Contact</h2>
-        <button type="button" onClick={onClose} className={addcontact.closeBtn}>
+        <h2 className={addcontact.titleAdd}>Add a Contact</h2>
+        <button
+          type="button"
+          onClick={onClose}
+          className={addcontact.closeBtnAdd}
+        >
           X
         </button>
         <form
@@ -19,14 +23,14 @@ const AddContact = ({
           className={addcontact.addContactForm}
         >
           <input
-            className={addcontact.formInput}
+            className={addcontact.addForm}
             type="text"
             name="image"
             placeholder="Enter your image link"
             onChange={handleAddFormChange}
           />
           <input
-            className={addcontact.formInput}
+            className={addcontact.addForm}
             type="text"
             name="fullName"
             required="required"
@@ -34,7 +38,7 @@ const AddContact = ({
             onChange={handleAddFormChange}
           />
           <input
-            className={addcontact.formInput}
+            className={addcontact.addForm}
             type="text"
             name="address"
             required="required"
@@ -42,7 +46,7 @@ const AddContact = ({
             onChange={handleAddFormChange}
           />
           <input
-            className={addcontact.formInput}
+            className={addcontact.addForm}
             type="text"
             name="phoneNumber"
             required="required"
@@ -50,14 +54,14 @@ const AddContact = ({
             onChange={handleAddFormChange}
           />
           <input
-            className={addcontact.formInput}
+            className={addcontact.addForm}
             type="email"
             name="email"
             required="required"
             placeholder="Enter an email..."
             onChange={handleAddFormChange}
           />
-          <button className={addcontact.formInput} type="submit">
+          <button className={addcontact.addForm} type="submit">
             Add
           </button>
         </form>
