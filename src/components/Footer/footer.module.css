@@ -5,11 +5,12 @@
   margin: 0 auto;
   flex-wrap: wrap;
   min-width: 1000px;
-  width: 70%;
+  width: 100%;
   padding: 1rem;
   border-right: 1px solid;
   border-left: 1px solid;
   border-bottom: 1px solid;
+  height: 3rem;
 }
 
 .text {

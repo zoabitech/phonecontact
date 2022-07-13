@@ -3,11 +3,16 @@ import contactcard from "./contactcard.module.css";
 import { AiFillInfoCircle } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
-const PreviewContant = ({ contact, onPreviewClicked, handleEditClick,
-  handleDeleteClick }) => {
+const PreviewContant = ({
+  contact,
+  onPreviewClicked,
+  handleEditClick,
+  handleDeleteClick,
+  handleFormSubmit,
+}) => {
   return (
-    <div className={contactcard.mainContainer}>
-      <div className={contactcard.col1}>
+    <div className={contactcard.mainCardContainer}>
+      <div className={contactcard.col1card}>
         <div className={contactcard.imageContainer}>
           <img
             className={contactcard.image}
@@ -17,25 +22,25 @@ const PreviewContant = ({ contact, onPreviewClicked, handleEditClick,
         </div>
         <h3>{contact.fullName}</h3>
       </div>
-      <div className={contactcard.col2}>
-      </div>
+      <div className={contactcard.col2card}></div>
       <div className={contactcard.btncontainer}>
         <button
-          className={contactcard.actionBtn}
+          className={contactcard.actionCardBtn}
           type="button"
           onClick={(event) => onPreviewClicked(event, contact)}
         >
           <AiFillInfoCircle color="white" size={30} />
         </button>
         <button
-          className={contactcard.actionBtn}
+          className={contactcard.actionCardBtn}
           type="button"
-          onClick={(event) => handleEditClick(event, contact)}
+          name="editContact"
+          onClick={(event) => handleFormSubmit(event)}
         >
           <AiFillEdit color="white" size={30} />
         </button>
         <button
-          className={contactcard.actionBtn}
+          className={contactcard.actionCardBtn}
           type="button"
           onClick={() => handleDeleteClick(contact.id)}
         >

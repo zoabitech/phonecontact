@@ -11,28 +11,33 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 const ContactsList = () => {
-  const [contacts, setContacts] = useState(data);
-  const [open, setOpen] = useState(false);
-  const [searchResults, setSearchResults] = useState(contacts);
-  const [viewContactId, setViewContactId] = useState(null);
+  const [contacts, setContacts] = useState(data); // contacts list state
+  const [open, setOpen] = useState(false); // popups state
+  const [searchResults, setSearchResults] = useState(contacts); // contacts on search state
+  const [viewContactId, setViewContactId] = useState(null); // contact id which we want to see his info
+  // The default data of the add contact form
   const [addFormData, setAddFormData] = useState({
-    image: "http://i.pravatar.cc/200?img=1",
+    image: "",
     fullName: "",
     address: "",
     phoneNumber: "",
     email: "",
   });
 
+  // The default data of the edit form
   const [editFormData, setEditFormData] = useState({
-    image: "http://i.pravatar.cc/200?img=1",
+    image: "",
     fullName: "",
     address: "",
     phoneNumber: "",
     email: "",
   });
 
+  // contact id which we want to edit
   const [editContactId, setEditContactId] = useState(null);
 
+  // Add contact form handlers
+  // Values changes handler
   const handleAddFormChange = (event) => {
     event.preventDefault();
 
@@ -45,31 +50,18 @@ const ContactsList = () => {
     setAddFormData(newFormData);
   };
 
-  const handleEditFormChange = (event) => {
-    event.preventDefault();
-
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...editFormData };
-    newFormData[fieldName] = fieldValue;
-
-    setEditFormData(newFormData);
-  };
-  const checkIfContactExist = (name) => {
-    const isContactExist = contacts.find(
-      (contact) => contact.fullName === name
-    );
-    return typeof isContactExist !== "undefined" ? true : false;
-  };
+  // On submit handler of the add form
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
     if (checkIfContactExist(addFormData.fullName))
-      alert("Sory this name alredy exist in the contact book");
+      alert("Sorry this name already exists in the contact book");
     else {
       const newContact = {
         id: uuidv4(),
-        image: addFormData.image !== "" ? addFormData.image : "http://i.pravatar.cc/200?img=1",
+        image:
+          addFormData.image !== ""
+            ? addFormData.image
+            : "http://i.pravatar.cc/200?img=1",
         fullName: addFormData.fullName,
         address: addFormData.address,
         phoneNumber: addFormData.phoneNumber,
@@ -82,11 +74,36 @@ const ContactsList = () => {
     }
     setOpen(false);
   };
+
+  // A boolean method which returns true if the contact already exist, otherwise it will return false
+  // used for the add contact method
+  const checkIfContactExist = (name) => {
+    const isContactExist = contacts.find(
+      (contact) => contact.fullName === name
+    );
+    return typeof isContactExist !== "undefined" ? true : false;
+  };
+
+  // Edit contact form handlers
+  // Values changes handler
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  };
+
+  // A handler for the edit button click
   const handleEditClick = (event, contact) => {
     event.preventDefault();
     setEditContactId(contact.id);
     const formValues = {
-      image: "http://i.pravatar.cc/200?img=1",
+      image: contact.image,
       fullName: contact.fullName,
       address: contact.address,
       phoneNumber: contact.phoneNumber,
@@ -94,11 +111,16 @@ const ContactsList = () => {
     };
     setEditFormData(formValues);
   };
+
+  // On submit handler for the edit form
   const handleEditFormSubmit = (event) => {
     event.preventDefault();
     const editedContact = {
       id: editContactId,
-      image: editFormData.image !== "" ? editFormData.image : "http://i.pravatar.cc/200?img=1",
+      image:
+        editFormData.image !== ""
+          ? editFormData.image
+          : "http://i.pravatar.cc/200?img=1",
       fullName: editFormData.fullName,
       address: editFormData.address,
       phoneNumber: editFormData.phoneNumber,
@@ -112,21 +134,27 @@ const ContactsList = () => {
     newContacts[index] = editedContact;
 
     setContacts(newContacts);
-    setSearchResults(newContacts)
+    setSearchResults(newContacts);
     setEditContactId(null);
   };
 
-
+  // A handler of the show info button
   const handlePreViewClicked = (event, contact) => {
     event.preventDefault();
     setViewContactId(contact.id);
   };
+
+  // A handler of the cancel button on the info popup
   const handleCancelOnPreViewClick = () => {
     setViewContactId(null);
   };
+
+  // Cancel button handler
   const handleCancelClick = () => {
     setEditContactId(null);
   };
+
+  // A mehtod which sorts the contacts by their names, to be shown in a sorted alphabetic order
   const sortContactList = (contacts) => {
     contacts.sort((a, b) => {
       if (a.fullName.toLowerCase() < b.fullName.toLowerCase()) return -1;
@@ -134,6 +162,8 @@ const ContactsList = () => {
       return 0;
     });
   };
+
+  // The delete button handler
   const handleDeleteClick = (contactId) => {
     const newContacts = [...contacts];
 
@@ -145,6 +175,7 @@ const ContactsList = () => {
     setSearchResults(newContacts);
   };
 
+  // Search handler method
   const searchHandler = (event) => {
     if (event.target.value !== "") {
       const contactSearch = contacts.filter((contact) => {
@@ -158,6 +189,7 @@ const ContactsList = () => {
     }
   };
 
+  // The search bar component
   const searchBar = (
     <div className={contactslist.searchContainer}>
       <BsSearch color="white" size={20} />
@@ -172,9 +204,10 @@ const ContactsList = () => {
     </div>
   );
 
+  // The add contact button as a component
   const addContact = (
     <button
-      className={contactslist.actionBtn}
+      className={contactslist.actionListBtn}
       type="submit"
       onClick={() => setOpen(true)}
     >
@@ -182,9 +215,10 @@ const ContactsList = () => {
     </button>
   );
 
+  // The clear all button as a component
   const clearAll = (
     <button
-      className={contactslist.actionBtn}
+      className={contactslist.actionListBtn}
       type="submit"
       onClick={() => {
         setContacts([]);
@@ -204,7 +238,7 @@ const ContactsList = () => {
         addContact={addContact}
         clearAll={clearAll}
       />
-      <div className={contactslist.mainContainer}>
+      <div className={contactslist.mainListContainer}>
         <div>
           <AddContact
             handleAddFormSubmit={handleAddFormSubmit}
@@ -213,14 +247,11 @@ const ContactsList = () => {
             onClose={() => setOpen(false)}
           />
         </div>
-
         <form onSubmit={handleEditFormSubmit}>
           <div>
             <div className={contactslist.contacts}>
-              {(searchResults).map((contact) => (
-                <Fragment
-                  key={contact.id}
-                >
+              {searchResults.map((contact) => (
+                <Fragment key={contact.id}>
                   {editContactId === contact.id ? (
                     <EditContact
                       editFormData={editFormData}
@@ -255,7 +286,8 @@ const ContactsList = () => {
         </form>
         <h2 className={contactslist.title}>
           {searchResults.length === 0 ? "No contacts..." : ""}
-        </h2>      </div>
+        </h2>{" "}
+      </div>
       <Footer />
     </div>
   );

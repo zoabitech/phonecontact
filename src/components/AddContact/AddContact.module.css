@@ -22,7 +22,7 @@
   border-radius: 20px;
 }
 
-.closeBtn {
+.closeBtnAdd {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -34,39 +34,30 @@
   color: white;
 }
 
-.addform {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  margin-top: 3rem;
-  padding: 1rem 2rem;
-}
-
 .addContactForm {
   display: flex;
   flex-direction: column;
 }
 
-.formInput {
+.addForm {
   border: 1px solid black;
   border-radius: 10px;
   padding: 0.5rem;
   margin: 0.5rem;
 }
 
-.title {
+.titleAdd {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.formInput:last-child {
+.addForm:last-child {
   background-color: rgb(12, 133, 247);
   border-color: rgba(166, 205, 234, 255);
   color: white;
 }
 
-.formInput:last-child:hover,
+.addForm:last-child:hover,
 .closeBtn:hover {
   background-color: rgb(4, 96, 182);
 }
