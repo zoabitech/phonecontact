@@ -1,11 +1,6 @@
 import React from "react";
 import addcontact from "../AddContact/addcontact.module.css";
-const AddContact = ({
-  handleAddFormSubmit,
-  handleAddFormChange,
-  open,
-  onClose,
-}) => {
+const Form = ({ handleFormSubmit, handleFormChange, open, onClose }) => {
   if (!open) return null;
   return (
     <div className={addcontact.overlay}>
@@ -18,16 +13,13 @@ const AddContact = ({
         >
           X
         </button>
-        <form
-          onSubmit={handleAddFormSubmit}
-          className={addcontact.addContactForm}
-        >
+        <form onSubmit={handleFormSubmit} className={addcontact.addContactForm}>
           <input
             className={addcontact.addForm}
             type="text"
             name="image"
             placeholder="Enter your image link"
-            onChange={handleAddFormChange}
+            onChange={handleFormChange}
           />
           <input
             className={addcontact.addForm}
@@ -35,14 +27,14 @@ const AddContact = ({
             name="fullName"
             required="required"
             placeholder="Enter a name..."
-            onChange={handleAddFormChange}
+            onChange={handleFormChange}
           />
           <input
             className={addcontact.addForm}
             type="text"
             name="address"
             placeholder="Enter an addres..."
-            onChange={handleAddFormChange}
+            onChange={handleFormChange}
           />
           <input
             className={addcontact.addForm}
@@ -50,7 +42,7 @@ const AddContact = ({
             name="phoneNumber"
             required="required"
             placeholder="Enter a phone number..."
-            onChange={handleAddFormChange}
+            onChange={handleFormChange}
           />
           <input
             className={addcontact.addForm}
@@ -58,7 +50,7 @@ const AddContact = ({
             name="email"
             required="required"
             placeholder="Enter an email..."
-            onChange={handleAddFormChange}
+            onChange={handleFormChange}
           />
           <button className={addcontact.addForm} type="submit">
             Add
@@ -69,4 +61,4 @@ const AddContact = ({
   );
 };
 
-export default AddContact;
+export default Form;
