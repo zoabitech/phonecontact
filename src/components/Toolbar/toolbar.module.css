@@ -1,0 +1,68 @@
+/* Styling the main container of the tooltip */
+.toolbarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: rgb(66, 179, 255);
+}
+
+/* Styling the search bar container (which contains the search input field) */
+.toolbarSearch {
+  padding: 0.25rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0;
+  width: 80%;
+}
+
+/* Styling the search input field */
+.searchBar {
+  border: none;
+  background-color: rgb(176, 222, 253);
+  margin: 0.25rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.searchBar:focus {
+  outline: none;
+}
+
+/* Styling the action buttons container (add contact, clear all) */
+.toolbarBtnActions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+}
+
+/* Styling the "clear all" button */
+.clearAllBtn {
+  border-radius: 10px;
+  margin: 0.4rem;
+  border: 1px solid rgba(166, 205, 234, 255);
+  background-color: rgb(12, 133, 247);
+  padding: 0.5rem;
+  color: white;
+}
+
+.clearAllBtn:hover {
+  background-color: rgb(4, 96, 182);
+  cursor: pointer;
+}
+
+/* Styling the "add contact button" */
+.addBtn {
+  background: none;
+  border: none;
+  margin-right: 1rem;
+}
+
+.addBtn:hover {
+  cursor: pointer;
+}

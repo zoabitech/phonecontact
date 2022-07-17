@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "image": "https://e-cdns-images.dzcdn.net/images/artist/e6a04d735093a46dcc8be197681d1199/500x500.jpg",
+    "fullName": "Dua Lipa",
+    "address": "3 waterfoot road",
+    "phoneNumber": "06473623",
+    "email": "jenny.chan@email.com",
+    "notes": "convallis posuere morbi leo urna molestie at elementum eu facilisis"
+  },
+  {
+    "id": 2,
+    "image": "https://pbs.twimg.com/media/E0zSFdPVEAQ7xEP?format=jpg&name=4096x4096",
+    "fullName": "Bebe Rexha",
+    "address": "4 tall town",
+    "phoneNumber": "23123123",
+    "email": "jessica.warren@email.com",
+    "notes": "tellus integer feugiat scelerisque varius morbi enim nunc faucibus"
+  },
+  {
+    "id": 3,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/91/Gigi_Hadid._2015.jpg",
+    "fullName": "Gigi Hadid",
+    "address": "11 lesly road",
+    "phoneNumber": "123123213",
+    "email": "tony.frank@email.com",
+    "notes": "cursus vitae congue mauris rhoncus aenean vel elit scelerisque mauris"
+  },
+  {
+    "id": 4,
+    "image": "https://gaimer.net/wp-content/uploads/2020/06/mira-twitch-pose.jpg",
+    "fullName": "Mira",
+    "address": "333 miltown manor",
+    "phoneNumber": "123213213",
+    "email": "jeremy.clark@email.com",
+    "notes": "eu lobortis elementum nibh tellus molestie nunc non blandit massa"
+  },
+  {
+    "id": 5,
+    "image": "https://imageio.forbes.com/specials-images/imageserve/5ceec355142c500008f42068/Rihanna-Diamond-Ball-Forbes-Women/0x0.jpg?format=jpg&crop=1950,1950,x32,y257,safe&height=1950&width=1950",
+    "fullName": "Rihanna",
+    "address": "99 blue acres",
+    "phoneNumber": "123213213",
+    "email": "raymon.edwards@email.com",
+    "notes": "facilisis leo vel fringilla est ullamcorper eget nulla facilisi etiam"
+  }
+]

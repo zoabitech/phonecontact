@@ -1,0 +1,55 @@
+/* Styling the popup (main container) */
+.popupContainer {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Styling the content container */
+.popupContent {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 2rem;
+  width: 50%;
+  max-width: 900px;
+  max-height: 60vh;
+  height: calc(100% - 8rem);
+  box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.7);
+}
+
+/* Styling the title of the popup window */
+.popupTitle {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Styling the close button */
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: 1px solid rgba(166, 205, 234, 255);
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: rgb(12, 133, 247);
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+  background-color: rgb(4, 96, 182);
+  cursor: pointer;
+}
+
+/* Styling the body of the popup window */
+.popupBody {
+  padding: 16px;
+}
