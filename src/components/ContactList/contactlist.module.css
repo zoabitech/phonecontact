@@ -1,0 +1,76 @@
+/* Styling the main contacts container */
+.contactListContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(176, 222, 253);
+  min-height: calc(100vh - 15rem);
+  max-width: 1000px;
+  min-width: 1000px;
+}
+
+/* Styling the card of a single contact */
+.singleContact {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10%;
+  justify-content: center;
+  align-items: center;
+  width: calc(30% - 2rem);
+  margin: 2rem;
+  box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.7);
+}
+
+/* Styling the first row which contains the image and the name */
+.firstRow {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling the second row which contains the action buttons */
+.secondRow {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Styling the contact's image */
+.contactImage {
+  border-radius: 100%;
+  width: 8rem;
+  height: 8rem;
+}
+
+/* Styling the contact's name */
+.contactName {
+  margin-top: 0.5rem;
+}
+
+/* Styling the action buttons */
+.actionCardBtn {
+  border: 1px solid rgba(166, 205, 234, 255);
+  border-radius: 10%;
+  padding: 0.5rem;
+  background-color: rgb(12, 133, 247);
+}
+
+.actionCardBtn:hover {
+  background-color: rgb(4, 96, 182);
+  cursor: pointer;
+}
+
+/* Styling the "total contacts" title */
+.totalContacts {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: auto;
+}
