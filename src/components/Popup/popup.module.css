@@ -13,19 +13,19 @@
 .popupContent {
   position: relative;
   background-color: #fefefe;
-  margin: auto;
-  padding: 2rem;
+  margin: 1rem auto;
+  /* padding: 2rem; */
   width: 50%;
   max-width: 900px;
-  max-height: 60vh;
-  height: calc(100% - 8rem);
+  /* max-height: 60vh; */
+  /* height: calc(100% - 8rem); */
   box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.7);
 }
 
 /* Styling the title of the popup window */
 .popupTitle {
   text-align: center;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
 }
 
 /* Styling the close button */
@@ -50,6 +50,6 @@
 }
 
 /* Styling the body of the popup window */
-.popupBody {
+/* .popupBody {
   padding: 16px;
-}
+} */
